@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body id="body" onload="showDate()">
+	<h1>Learning JavaScript with Brad Traversy</h1>
+	<script>
+		/* To start writing Javascript, we have 2 options:
+		a)	link a JS file - in the html head : <script src="name.js"><\/script> (the backslash is there only for the sake of escaping the regular slash)
+		b)	put it in the html inside tags: <script><\/script>
+		*/
+		/*alert('Script tags work!')*/
+		/* Data Types - Number
+						Strings
+						Array
+						Object*/
+
+		var number1 = 35; //- sets up a variable - as a number
+		var number2 = "35"; //- sets up a variable - as a string
+		var number3 = 20;
+		//alert(number1 + number3); // adds 2 numbers
+		//alert("My fav. number is " +number1 + number2); // returns My fav... 3535 - concatinates them to a string
+
+		// Naming conventions of variables:
+		// can contain: letters, numbers, underscores, dollar signs
+		// should begin with a letter (or dollar, underscore)
+		// is case sensitive
+		// var test = "is different from var Test";
+		// var Test = "this does not override the previous var"
+
+		//camel case... var myFavoriteNumber; - we can initialize a var without a value - that we can assign later on ... myFavoriteNumber = 5;
+		//partial case... var MyFavoriteNumber;
+		//underscore... var my_favorite_number; (often in PHP, JS as well)
+
+		// Arrays
+		var colors = ['red', 'green', 'blue',]; //- initialized array
+		colors[3] = 'purple'; //adds a value to the array
+		colors.push('white'); //function .push adds a value at the end of the array
+		//alert(colors);// - this prints out everything
+		//alert(colors[2]);//this targets a particular valuew
+		//var colors2 = new array('white', 'brown', 'black');//another way to create an array
+		var numbers = [1, 2, 10, 20];
+		//alert(numbers[0]+numbers[2]);
+		//alert(numbers.length); // .legth property gives us a count of values in the array
+		//alert(numbers.sort());//sorts by value
+		// alert(numbers.reverse());//gives us the reverse order of values in the array
+
+		// functions and methods in JS are pretty much the same thing
+
+		// LOOPS - For, while, foreach
+			//we open a console log in a browser -> F12
+			/*for (var i = 0; i < 10; i++) {
+				console.log("whatever "+i); //this appears in the browsers concole
+			}*/
+			/*var i = 0;
+			while (i<10) {
+				console.log("whatever " + i);
+				i++;
+			}*/
+			/*var numbers5 = [1, 5, 10, 25, 50];
+			numbers5.forEach( function(number) {
+				console.log(number)
+			});*/
+			/*var numbers6 = [1, 5, 25, 50];
+			numbers6.reverse();
+			for(var i = 0; i<numbers6.length;i++){
+				console.log(numbers6[i])
+			}*/
+
+			//CONDITIONALS
+			/*var var1 = 3;
+			var var2 = 4;
+			if (var1!=var2 && var1 ==3) {
+				console.log('this is true');
+			} else {
+				console.log('this is false');
+			}*/
+			/*var fruit = 'apple';
+			switch (fruit) {
+				case "banana":
+					alert("I hate bananas");
+					break;
+				case "apple":
+					alert("I love apples");
+					break;
+				default:
+					alert("I eat everything");
+					break;
+			}*/
+
+			//OBJECTS
+
+			//Object Literal
+			/*var person = {
+				firstName: 'Brad',
+				lastName:'Traversy',
+				age:34,
+				children: ['Brianna', 'Nicholas',],
+				address: {
+					street: '555 Something',
+					city: 'Boston',
+					state: 'MA'
+				},
+				fullName: function() {
+					return this.firstName + " " +this.lastName;
+				}
+			}
+			console.log(person.fullName());*/
+
+			//Object Constructor
+
+			/*var apple = new Object();
+			apple.color = 'red';
+			apple.shape = 'round';
+			apple.describe = function(){
+				return 'An apple is the color ' + this.color+' and is the shape '+this.shape;
+			}
+			console.log(apple.describe());*/
+
+			//Constructor Pattern
+			/*function Fruit(name, color, shape) {
+				this.name = name;
+				this.color = color;
+				this.shape = shape;
+
+				this.describe = function() {
+					return 'A ' +this.name+ ' is the color '+this.color+ ' and is the shape '+this.shape;
+				}
+			}
+			var apple = new Fruit('apple', 'red', 'round');
+			var melon = new Fruit('melon', 'green', 'round');
+			console.log(melon.describe());*/
+
+			/*var users = [
+				{
+					name: 'John Doe',
+					age:30
+				},
+				{
+					name: 'Mark Smith',
+					age:35
+				},
+				];
+			console.log(users[0].name);*/
+	</script>
+	<h2 id="heading">Nadpis 2, který se změní</h2>
+
+	<button onclick="doClick()">Click me</button><br>
+	<button onclick="this.innerHTML ='You clicked the second button'">Click me</button><br>
+	<button onclick="changeText(this)">Click me</button><br>
+	<button onclick="changeText2(this)">Click me</button><br>
+	<button onclick="showDate()">Show date</button><br>
+	<button onmouseout="clearDate()" onmouseover="showDate()">Ukaž myškou</button><br>
+	<h2 id="time"></h2>
+	<script>
+		//EVENTS
+		function doClick() {
+			alert('You clicked');
+		}
+		function changeText(id){
+			id.innerHTML = 'You clicked the third button';
+		}
+		function changeText2() {
+			var heading = document.getElementById('heading');
+			heading.innerHTML = 'You clicked!';
+		}
+		function showDate() {
+			document.getElementById('time');
+			time.innerHTML = Date();
+		}
+		function clearDate() {
+			document.getElementById('time');
+			time.innerHTML = '';
+		}
+
+		// FORMS - JS plays a big role in form validation and other functionalities with forms
+		// In reality, we would use eg. jQuery or some other framework
+
+		// how do we link some events to some of the form fields
+		// how to do some simple form validation
+	</script>
+	<form method="post" action="" name="myForm" onsubmit="return validateForm()">
+		<div>
+			<label>First Name</label>
+			<input type="text" name="firstName" id="firstName">
+		</div>
+		<br>
+		<div>
+			<label>Last Name</label>
+			<input type="text" name="lastName" id="lastName">
+		</div>
+		<br>
+		<div>
+			<label>Background</label>
+			<select name="background" id="background" onchange="changeBackground(this)">
+				<option value="red">Red</option>
+				<option value="blue">Blue</option>
+				<option value="green">Green</option>
+			</select>
+		</div>
+		<br>
+		<input type="submit" value="submit">
+	</form>
+	<p id="zmen">text změní barvu?</p>
+	<script>
+		function changeBackground(x) {
+			console.log(x.value);
+			/*var body = document.getElementById('body');
+			body.style.backgroundColor = x.value;*/
+			var heading = document.getElementById('zmen');
+			heading.style.color = x.value;
+		}
+
+		function validateForm() {
+			var firstName = document.forms["myForm"]["firstName"].value;
+			if(firstName =="" || firstName == null) {
+				alert("first name is required");
+				return false;
+			}
+			if(firstName.length <3) {
+				alert("first name must be at least 3 characters.");
+				return false;
+			}
+		}
+	</script>
+
+</body>
+</html>
